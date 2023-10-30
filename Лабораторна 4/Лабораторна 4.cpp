@@ -57,7 +57,10 @@ public:
 
 class CircleInRhombus : public Circle, public Rhombus {
 public:
-    CircleInRhombus(double r, double d1, double d2) : Circle(r), Rhombus(d1, d2) {}
+     CircleInRhombus(double d1, double d2) : Circle(0.0), Rhombus(d1, d2) {
+     
+     radius = diagonal1 * diagonal2 / (4.0 * Circle::area());
+ }
 
     void printInfo(std::ofstream& output) {
         output << "Коло, вписане у Ромб:\n";
@@ -70,7 +73,7 @@ public:
 };
 
 int main() {
-    CircleInRhombus circleInRhombus(4.0, 6.0, 8.0);
+    CircleInRhombus circleInRhombus( 6.0, 8.0);
     Circle circle(4.0);
     Rhombus rhombus(6.0, 8.0);
     std::ofstream outputFile("output.txt");
